@@ -11,6 +11,8 @@ services:
       - POSTGRES_USER=odoo
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_DB=odoodb
+    networks:
+      - app-network
 
   odoo:
     build: ./odoo
@@ -23,3 +25,9 @@ services:
       - USER=odoo
       - PASSWORD=odoo
       - PGPORT=5432
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
